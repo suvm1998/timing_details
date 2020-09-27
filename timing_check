@@ -1,0 +1,21 @@
+
+set my_work_dir = `pwd`
+
+
+if ($#argv != 1) then 
+	echo "Info: Please provide the csv file"
+	exit 1
+endif
+
+if (! -f $argv[1] || $argv[1] == "-help") then
+        if ($argv[1] != "-help") then
+                echo "Error:  Cannot find csv file $argv[1]. Exiting..."
+                exit 1
+        else
+                echo USAGE: ./timing_check \<csv file\>
+                echo
+                echo
+        endif
+else
+		tclsh Main_Script.tcl $argv[1]
+endif
